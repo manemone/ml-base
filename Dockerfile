@@ -22,7 +22,7 @@ RUN apt-get update \
 
 # Setup Python environments
 WORKDIR /root
-RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm -rf ~/get-pip.py ~/.cache/pip && pip install numpy scipy
+RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm -rf ~/get-pip.py ~/.cache/pip && pip install numpy scipy tqdm scikit-image seaborn easydict
 
 # Build and install opencv
 RUN mkdir -p /tmp/opencv-3.4.0/build
