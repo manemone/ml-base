@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:1.4.1-gpu-py3
+FROM tensorflow/tensorflow:1.2.1-gpu-py3
 
 # 自動アップグレード
 ENV DEBIAN_FRONTEND "noninteractive"
