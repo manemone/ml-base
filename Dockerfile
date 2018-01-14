@@ -1,6 +1,6 @@
 FROM tensorflow/tensorflow:1.2.1-gpu-py3
 
-# 自動アップグレード
+# Auto upgrade
 ENV DEBIAN_FRONTEND "noninteractive"
 RUN apt-get update -y
 RUN apt-get -y \
@@ -8,24 +8,17 @@ RUN apt-get -y \
     -o Dpkg::Options::="--force-confold" dist-upgrade
 
 # Install essentail / image processing libraries
-RUN apt-get update && \
-    apt-get install -y build-essential cmake pkg-config libjpeg8-dev libtiff5-dev \
-    libjasper-dev libpng12-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
-    libxvidcore-dev libx264-dev libatlas-base-dev gfortran wget unzip
-
-# Clear cache
-RUN apt-get clean -y && \
-    apt-get autoremove -y && \
-    apt-get update -y && \
-    apt-get upgrade -y && \
-    apt-get autoremove -y && \
-    apt-get autoclean -y && \
-    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
-
-# Download opencv
-WORKDIR /tmp
-RUN wget -O /tmp/opencv.zip https://github.com/Itseez/opencv/archive/3.4.0.zip && unzip /tmp/opencv.zip \
-    && wget -O /tmp/opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.4.0.zip && unzip /tmp/opencv_contrib.zip
+RUN apt-get update \
+    && apt-get install -y build-essential cmake pkg-config libjpeg8-dev libtiff5-dev \
+       libjasper-dev libpng12-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
+       libxvidcore-dev libx264-dev libatlas-base-dev gfortran wget unzip tree python3-tk tk-dev \
+    && apt-get clean -y \
+    && apt-get autoremove -y \
+    && apt-get update -y \
+    && apt-get upgrade -y \
+    && apt-get autoremove -y \
+    && apt-get autoclean -y \
+    && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 # Setup Python environments
 WORKDIR /root
