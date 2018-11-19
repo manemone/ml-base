@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:1.2.1-gpu-py3
+FROM tensorflow/tensorflow:1.12.0-gpu-py3
 
 # Auto upgrade
 ENV DEBIAN_FRONTEND "noninteractive"
@@ -26,15 +26,15 @@ RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm -rf ~/g
 
 # Download, Build and install opencv
 WORKDIR /tmp
-RUN wget -O /tmp/opencv.zip https://github.com/Itseez/opencv/archive/3.4.0.zip && unzip /tmp/opencv.zip \
-    && wget -O /tmp/opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.4.0.zip && unzip /tmp/opencv_contrib.zip \
-    && mkdir -p /tmp/opencv-3.4.0/build \
-    && cd /tmp/opencv-3.4.0/build \
+RUN wget -O /tmp/opencv.zip https://github.com/Itseez/opencv/archive/4.0.0.zip && unzip /tmp/opencv.zip \
+    && wget -O /tmp/opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/4.0.0.zip && unzip /tmp/opencv_contrib.zip \
+    && mkdir -p /tmp/opencv-4.0.0/build \
+    && cd /tmp/opencv-4.0.0/build \
     && cmake -D CMAKE_BUILD_TYPE=RELEASE \
        -D CMAKE_INSTALL_PREFIX=/usr/local \
        -D INSTALL_PYTHON_EXAMPLES=ON \
        -D INSTALL_C_EXAMPLES=OFF \
-       -D OPENCV_EXTRA_MODULES_PATH=/tmp/opencv_contrib-3.4.0/modules \
+       -D OPENCV_EXTRA_MODULES_PATH=/tmp/opencv_contrib-4.0.0/modules \
        -D PYTHON_EXECUTABLE=/usr/bin/python \
        -D BUILD_EXAMPLES=ON .. \
        -DCMAKE_LIBRARY_PATH=/usr/local/cuda/lib64/stubs \
