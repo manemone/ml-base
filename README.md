@@ -27,7 +27,7 @@ $ docker pull manemonetech/ml-base-cpu    # for non-GPU-supported version
 Run the docker image with following command:
 
 ```bash
-$ docker run -it -p 8888:8888 -v /tmp:$(pwd ~/Documents/jupyter_notebook) manemonetech/ml-base
+$ docker run -it -p 8888:8888 -v $(echo ~/Documents/jupyter_notebook):/tmp manemonetech/ml-base
 ```
 
 * Port 8888 of your host machine will be binded to the jupyter notebook.
