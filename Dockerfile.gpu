@@ -9,7 +9,7 @@ RUN apt-get -y \
 
 # Install essentail / image processing libraries
 RUN apt-get update \
-    && apt-get install -y build-essential cmake pkg-config libjpeg8-dev libtiff5-dev \
+    && apt-get install -y git build-essential cmake pkg-config libjpeg8-dev libtiff5-dev \
        libjasper-dev libpng12-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
        libxvidcore-dev libx264-dev libatlas-base-dev gfortran wget unzip tree python3-tk tk-dev \
     && apt-get clean -y \
@@ -22,7 +22,7 @@ RUN apt-get update \
 
 # Setup Python environments
 WORKDIR /root
-RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm -rf ~/get-pip.py ~/.cache/pip && pip install numpy scipy tqdm scikit-image seaborn easydict opencv-contrib-python chainer keras
+RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm -rf ~/get-pip.py ~/.cache/pip && pip install numpy scipy tqdm scikit-image seaborn easydict opencv-contrib-python chainer keras git+git://github.com/keplr-io/quiver.git
 
 # Download, Build and install opencv
 WORKDIR /tmp
