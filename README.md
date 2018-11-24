@@ -12,7 +12,7 @@ ml-base is an all-in-one docker image for machine learning tasks.
 # How to use
 
 ## Choose one of the version of the image
-The images has two versions: **[GPU-supported version](https://hub.docker.com/r/manemonetech/ml-base/)** and **[non-GPU-supported version](https://hub.docker.com/r/manemonetech/ml-base/)** (CPU-only supported version).
+There are two versions of the docker image: **[GPU-supported version](https://hub.docker.com/r/manemonetech/ml-base/)** and **[non-GPU-supported version](https://hub.docker.com/r/manemonetech/ml-base/)** (CPU-only supported version).
 If you are an user of a host machine with discrete nVidia GPU with CUDA support, you may like GPU-environment version of the image.
 
 ## Pull the image you choose
@@ -27,8 +27,11 @@ $ docker pull manemonetech/ml-base-cpu    # for non-GPU-supported version
 Run the docker image with following command:
 
 ```bash
-$ docker run -it -p 8888:8888 manemonetech/ml-base
+$ docker run -it -p 8888:8888 -v /tmp:$(pwd ~/Documents/jupyter_notebook) manemonetech/ml-base
 ```
+
+* Port 8888 of your host machine will be binded to the jupyter notebook.
+* Directory `~/Documents/jupyter_notebook` on your host machine will be mounted and be used as the root directory of the juputer notebook.
 
 Jupyter notebook will be launched on a docker container and soon will be ready to be accessed via your browser.
 You may see the URL at the end of the command's ouput:
@@ -60,6 +63,6 @@ $ ./build.sh
 The images will be built and tagges as:
 
 ```bash
-manemonetech/ml-base:latest        # GPU version
-manemonetech/ml-base-cpu:latest    # CPU version
+manemonetech/ml-base:latest        # for GPU-supported version
+manemonetech/ml-base-cpu:latest    # for non-CPU-supported version
 ```
