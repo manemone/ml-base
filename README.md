@@ -7,7 +7,8 @@ ml-base is an all-in-one docker image for machine learning tasks.
 * Keras
 * Chainer
 * FFmpeg
-* Quiver
+* Quiver (not included in GPU-supported version to avoid tensorflow dependecy problem)
+  * See: https://github.com/keplr-io/quiver/issues/59
 * OpenCV (with video support)
 
 # How to use

@@ -22,7 +22,7 @@ RUN apt-get update \
 
 # Setup Python environments
 WORKDIR /root
-RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm -rf ~/get-pip.py ~/.cache/pip && pip install numpy scipy tqdm scikit-image seaborn easydict opencv-contrib-python chainer keras git+git://github.com/keplr-io/quiver.git
+RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm -rf ~/get-pip.py ~/.cache/pip && pip install numpy scipy tqdm scikit-image seaborn easydict opencv-contrib-python chainer keras
 
 # Download, Build and install opencv
 WORKDIR /tmp
